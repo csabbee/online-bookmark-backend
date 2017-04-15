@@ -16,6 +16,6 @@ env:
 after_success:
 - echo "deploying..."
 - lftp -c "open -u $USER,$PASSWORD $HOST; mirror -R $TRAVIS_BUILD_DIR/api ~/backend/api"
-- lftp -c "open -u $USER,$PASSWORD $HOST; mirror -R $TRAVIS_BUILD_DIR -i package.json ~/backend"
-- lftp -c "open -u $USER,$PASSWORD $HOST; mirror -R $TRAVIS_BUILD_DIR -i app.js ~/backend"
+- lftp -c "open -u $USER,$PASSWORD $HOST; mirror -R $TRAVIS_BUILD_DIR -f package.json ~/backend"
+- lftp -c "open -u $USER,$PASSWORD $HOST; mirror -R $TRAVIS_BUILD_DIR -f app.js ~/backend"
 - echo "deploy done"
