@@ -7,6 +7,7 @@ const { checkAuthorization, allowCrossDomain } = require('./api/helpers/auth-mid
 
 module.exports = app; // for testing
 
+
 app.use(allowCrossDomain);
 app.use(checkAuthorization);
 
