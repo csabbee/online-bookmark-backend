@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
-const emailConfig = require('../../../../online-bookmark-config/email.json');
-const swaggerConfig = require('yamljs').load('./backend/online-bookmark/api/swagger/swagger.yaml');
+const emailConfig = require('../../online-bookmark-config/email.json');
+const swaggerConfig = require('yamljs').load('./api/swagger/swagger.yaml');
 const { encrypt, decrypt } = require('../helpers/crypto');
 
 const smtpConfigUrl = `smtps://${emailConfig.username}@gmail.com:${emailConfig.password}@smtp.gmail.com`;

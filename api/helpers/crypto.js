@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const algorithm = 'aes-256-ctr';
 const jwt = require('jsonwebtoken');
-const { privateKey, tokenExpiry }  = require('../../../../online-bookmark-config/jwt.json');
+const { privateKey, tokenExpiry }  = require('../../online-bookmark-config/jwt.json');
 
 module.exports = {
     encrypt,
