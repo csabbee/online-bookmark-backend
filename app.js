@@ -5,10 +5,16 @@ const app = require('express')();
 const chalk = require('chalk');
 const { checkAuthorization, allowCrossDomain } = require('./api/helpers/auth-middleware');
 
+const ENVIRONMENT = {
+    isTesting: process.argv.slice(2)[0] === 'test'
+};
+
 module.exports = app; // for testing
 
-app.use(allowCrossDomain);
-app.use(checkAuthorization);
+if (!ENVIRONMENT.isTesting) {
+    app.use(allowCrossDomain);
+    app.use(checkAuthorization);
+}
 
 const config = {
     appRoot: __dirname // required config
