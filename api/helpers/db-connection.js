@@ -1,6 +1,10 @@
+const ENVIRONMENT = {
+    isTesting: process.argv.slice(2)[0] === 'test'
+};
+
 const MongoClient = require('mongodb').MongoClient;
 
-const { user, password, port, ip } = require('../../online-bookmark-config/mongo.json');
+const { user, password, port, ip } = ENVIRONMENT.isTesting ? {} : require('../../online-bookmark-config/mongo.json');
 
 const url = `mongodb://${user}:${password}@${ip}:${port}/online-bookmark`;
 

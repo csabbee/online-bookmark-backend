@@ -1,7 +1,11 @@
+const ENVIRONMENT = {
+    isTesting: process.argv.slice(2)[0] === 'test'
+};
+
 const crypto = require('crypto');
 const algorithm = 'aes-256-ctr';
 const jwt = require('jsonwebtoken');
-const { privateKey, tokenExpiry }  = require('../../online-bookmark-config/jwt.json');
+const { privateKey, tokenExpiry }  = ENVIRONMENT.isTesting ? {} : require('../../online-bookmark-config/jwt.json');
 
 module.exports = {
     encrypt,

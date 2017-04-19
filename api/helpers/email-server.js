@@ -1,5 +1,9 @@
+const ENVIRONMENT = {
+    isTesting: process.argv.slice(2)[0] === 'test'
+};
+
 const nodemailer = require('nodemailer');
-const emailConfig = require('../../online-bookmark-config/email.json');
+const emailConfig = ENVIRONMENT.isTesting ? {} : require('../../online-bookmark-config/email.json');
 const swaggerConfig = require('yamljs').load('./api/swagger/swagger.yaml');
 const { encrypt, decrypt } = require('../helpers/crypto');
 

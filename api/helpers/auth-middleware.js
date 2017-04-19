@@ -1,7 +1,11 @@
+const ENVIRONMENT = {
+    isTesting: process.argv.slice(2)[0] === 'test'
+};
+
 const DB = require('./db-connection');
 const { verifyToken, generateToken, decodeToken } = require('./crypto');
 const { pick } = require('../helpers/common');
-const { expiryThreshold } = require('../../online-bookmark-config/jwt.json');
+const { expiryThreshold } = ENVIRONMENT.isTesting ? {} : require('../../online-bookmark-config/jwt.json');
 
 const authExceptions = ['/user/login', '/user/validate'];
 const userCreation = '/user';
