@@ -20,11 +20,12 @@
     "lodash": "^4.17.4",
     "nodemon": "^1.11.0",
     "should": "^7.1.0",
-    "supertest": "^1.0.0"
+    "supertest": "^1.0.0",
+    "swagger": "^0.7.5"
   },
   "scripts": {
     "develop": "node_modules/.bin/nodemon app.js --color",
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "ENV=TEST node_modules/.bin/swagger project test"
   }
 }
