@@ -2,6 +2,7 @@ online-bookmark-config/
 
 # IDE files
 .idea
+.vscode
 
 # Logs
 logs
