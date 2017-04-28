@@ -19,7 +19,6 @@ function connect() {
             if (err) {
                 console.error(err.MongoError);
                 reject('Couldn\'t connect to server');
-                throw Error('Couldn\'t connect to server');
             }
             console.log('Successfully connected to server');
 
