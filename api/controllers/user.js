@@ -106,7 +106,7 @@ function updateUser(req, res) {
                     { user: user.username },
                     { $set: { user: updatedUser.username }}
                 );
-            listsUpdate = db.collection('onlineBookmark')
+            listsUpdate = db.collection('lists')
                 .updateMany(
                     { user: user.username },
                     { $set: { user: updatedUser.username }}
