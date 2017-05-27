@@ -35,7 +35,6 @@ function createUser(req, res) {
         .then(() => {
             sendMailVerificationLink(user, token);
             res.json({ message: 'Success' });
-            db.close();
         })
         .catch(err => {
             if (err.message === '409') {
@@ -69,12 +68,10 @@ function loginUser(req, res) {
                             token_type: 'bearer',
                             access_token: token
                         });
-                        db.close();
                     });
             })
             .catch(err => {
                 res.status(500).json({ message: err.message });
-                db.close();
             });
     });
 }
@@ -116,11 +113,9 @@ function updateUser(req, res) {
         Promise.all([userUpdate, linksUpdate, listsUpdate])
             .then(() => {
                 res.json({ message: 'Success' });
-                db.close();
             })
             .catch(err => {
                 res.status(500).json({ message: err.message });
-                db.close();
             });
     });
 }

@@ -33,10 +33,8 @@ function newList(req, res) {
             })
         ).then(() => {
             res.json({ message: 'list created' });
-            db.close();
         }, (err) => {
             res.json(err);
-            db.close();
         });
     });
 }
@@ -57,11 +55,9 @@ function newListElement(req, res) {
                     { returnOriginal: false }
                 ).then(modifiedList => {
                     res.json(modifiedList.value);
-                    db.close();
                 });
             }, (err) => {
                 res.json(err);
-                db.close();
             });
     });
 }
@@ -93,7 +89,6 @@ function editList(req, res) {
             return db.collection('lists').findOne({ _id: ObjectID(listId) });
         }).then(modifiedList => {
             res.json(modifiedList);
-            db.close();
         });
     });
 }
@@ -109,10 +104,8 @@ function updateList(req, res) {
             { returnOriginal: false }
         ).then(({ value }) => {
             res.json(value);
-            db.close();
         }, (err) => {
             res.status(500).json({ message: err.message });
-            db.close();
         });
     });
 }

@@ -6,7 +6,4 @@ function handleQuery(db, res, err, docs) {
     }
 
     res.json(docs);
-
-    // Close the DB
-    db.close();
 }

@@ -27,11 +27,9 @@ function verifyEmail(req, res) {
             })
             .then(() => {
                 res.json({ message: 'Success' });
-                db.close();
             })
             .catch(err => {
                 res.status(400).send({ message: err.message });
-                db.close();
             });
     });
 }
@@ -52,11 +50,9 @@ function resendVerificationEmail(req, res) {
 
                 sendMailVerificationLink(user, newToken);
                 res.json({ message: 'Success' });
-                db.close();
             })
             .catch(err => {
                 res.status(500).json({ message: err.message });
-                db.close();
             });
     });
 }

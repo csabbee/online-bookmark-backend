@@ -26,7 +26,6 @@ function createLink(req, res) {
             .findOneAndUpdate(link, Object.assign({}, link, { user: username }), { upsert: true, returnOriginal: false })
             .then(({ value: insertedLink }) => {
                 res.json(insertedLink);
-                db.close();
             });
     });
 }
@@ -43,7 +42,6 @@ function updateLink(req, res) {
             )
             .then(() => {
                 res.json(Object.assign({}, link, { _id: linkId }));
-                db.close();
             });
     });
 }
