@@ -12,14 +12,14 @@ module.exports = {
     connect
 }
 
-let dbConnection;
+let connection;
 
 function connect() {
     return new Promise((resolve, reject) => {
-        if (dbConnection === undefined) {
+        if (connection === undefined) {
             MongoClient.connect(url, handleConnect);
         } else {
-            resolve(dbConnection);
+            resolve(connection);
         }
 
         function handleConnect(err, db) {
@@ -27,8 +27,8 @@ function connect() {
                 console.error(err.MongoError);
                 reject('Couldn\'t connect to server');
             }
+            connection = db;
             console.log('Successfully connected to server');
-            dbConnection = db;
 
             resolve(db);
         }
